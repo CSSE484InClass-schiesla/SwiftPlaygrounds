@@ -1,11 +1,48 @@
 
 
 // TODO: Create the TicTacToeGame class
+class TicTacToeGame: CustomStringConvertible {
+    
+    enum GameState: String {
+        case xTurn = "X's turn"
+        case oTurn = "O's turn"
+        case xWin = "X wins!"
+        case oWin = "O wins!"
+        case timeGame = "Tie Game"
+    }
+    
+    enum MarkType: String {
+        case x = "X"
+        case o = "O"
+        case none = "-"
+    }
+    
+    var gameState: GameState
+    var gameBoard: [MarkType]
+    
+    init() {
+        gameState = .xTurn
+        gameBoard = [MarkType](repeating: .none, count: 9)
+    }
+    
+    func getGameString(_ indices: [Int] = [0, 1, 2, 3, 4, 5, 6, 7, 8]) -> String {
+        var gameString = ""
+        //TODO: Implement
+        for index in indices {
+            gameString += gameBoard[index].rawValue
+        }
+        return gameString;
+    }
+    
+    var description: String {
+        return "\(gameState.rawValue) Board: \(getGameString())"
+    }
+}
 
 
 
 /* ----------------- Official Playground testing ----------------- */
-//var game = TicTacToeGame()
+var game = TicTacToeGame()
 //game.pressedSquare(0)
 //game.pressedSquare(1)
 //game.pressedSquare(3)
