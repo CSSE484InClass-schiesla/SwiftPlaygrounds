@@ -40,7 +40,10 @@ class LinearLightsOutGame: CustomStringConvertible {
         return lightStatusString
     }
     
-    func pressedLightAtIndex(_ index: Int) {
+    func pressedLightAtIndex(_ index: Int) -> Bool {
+        if gameState == .win {
+            return true
+        }
         moves+=1
         switchLight(index)
         if index == 0 {
@@ -51,6 +54,7 @@ class LinearLightsOutGame: CustomStringConvertible {
             switchLight(index-1)
             switchLight(index+1)
         }
+        return checkForGameOver()
     }
     
     func switchLight(_ index: Int) {
@@ -61,11 +65,13 @@ class LinearLightsOutGame: CustomStringConvertible {
         }
     }
     
-    func checkForGameOver() {
+    func checkForGameOver() -> Bool {
         if lightStates.contains(true) {
             gameState = .notWin
+            return false
         } else {
             gameState = .win
+            return true
         }
     }
     
