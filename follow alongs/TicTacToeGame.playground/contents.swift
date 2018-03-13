@@ -1,6 +1,3 @@
-
-
-// TODO: Create the TicTacToeGame class
 class TicTacToeGame: CustomStringConvertible {
     
     enum GameState: String {
@@ -22,7 +19,7 @@ class TicTacToeGame: CustomStringConvertible {
     
     init() {
         gameState = .xTurn
-        gameBoard = [MarkType](repeating: .none, count: 9)
+        gameBoard = 
     }
     
     func getGameString(_ indices: [Int] = [0, 1, 2, 3, 4, 5, 6, 7, 8]) -> String {
